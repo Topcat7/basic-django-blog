@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm, Textarea
 
 class Post(models.Model):
     title = models.CharField(max_length=128)
@@ -20,3 +21,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class PostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'text', 'author', 'published_date']
